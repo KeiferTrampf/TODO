@@ -2,7 +2,9 @@
 function displayData(data) {
   const taskList = document.getElementById("taskList");
   taskList.innerHTML = ""; // Clear previous list items
-
+  if (!data || data.length === 0) {
+    taskList.innerHTML = "<li>No tasks available</li>";
+  }
   data.forEach((task) => {
     const li = document.createElement("li");
     if (task.completed) {
@@ -36,7 +38,13 @@ function displayData(data) {
     taskList.appendChild(li);
   });
 }
-
+function displayError(message) {
+  const body = document.getElementById("body");
+  body.innerHTML = "";
+  body.innerHTML = `<div id="error">
+  <h1>Error</h1>
+  <p>${message}</p>`;
+}
 // Function to handle search
 async function filterData(query) {
   if (!query) {
@@ -56,6 +64,7 @@ async function filterData(query) {
     displayData(data);
   } catch (error) {
     console.error("Error fetching search results:", error);
+    displayError(error);
   }
 }
 
@@ -70,6 +79,7 @@ async function fetchData() {
     displayData(data);
   } catch (error) {
     console.error("Error fetching data:", error);
+    displayError(error);
   }
 }
 
@@ -89,6 +99,7 @@ async function createTask(task) {
     fetchData(); // Refresh the task list
   } catch (error) {
     console.error("Error creating task:", error);
+    displayError(error);
   }
 }
 
@@ -104,6 +115,7 @@ async function deleteTask(id) {
     fetchData(); // Refresh the task list
   } catch (error) {
     console.error("Error deleting task:", error);
+    displayError(error);
   }
 }
 
@@ -124,6 +136,7 @@ async function updateTask(task) {
     fetchData(); // Refresh the task list
   } catch (error) {
     console.error("Error updating task:", error);
+    displayError(error);
   }
 }
 
