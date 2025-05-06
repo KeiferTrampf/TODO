@@ -109,7 +109,7 @@ async function deleteTask(id) {
 
 // Function to update a task
 async function updateTask(task) {
-  const updatedTask = { completed: true }; // Send only completed = true
+  const updatedTask = { completed: !task.completed }; // Toggle the completed value
   try {
     const response = await fetch(`http://localhost:3000/api/todo/${task._id}`, {
       method: "PUT",
