@@ -9,19 +9,6 @@ const getTodos = async (req, res) => {
   }
 };
 
-const getTodoById = async (req, res) => {
-  try {
-    const todoId = req.params.id;
-    const todo = await todoHandler.getTodoById(todoId);
-    if (!todo) {
-      return res.status(404).json({ error: "Todo not found" });
-    }
-    res.status(200).json(todo);
-  } catch (error) {
-    res.status(500).json({ error: "Failed to fetch the todo" });
-  }
-};
-
 const deleteTodo = async (req, res) => {
   try {
     const todoId = req.params.id;
@@ -82,7 +69,6 @@ const searchTodosByTitle = async (req, res) => {
 
 export default {
   getTodos,
-  getTodoById,
   deleteTodo,
   createTodo,
   updateTodo,

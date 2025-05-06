@@ -8,12 +8,12 @@ function displayData(data) {
     if (task.completed) {
       li.classList.add("completed");
     }
-    li.textContent = `
-            Title: ${task.title}, 
-            Description: ${task.description}, 
-            Due Date: ${new Date(task.dueDate).toLocaleString()}, 
-            Completed: ${task.completed ? "Yes" : "No"}
-        `;
+    li.innerHTML = `
+      Title: ${task.title}<br>
+      Description: ${task.description}<br>
+      Due Date: ${new Date(task.dueDate).toLocaleString()}<br>
+      Completed: ${task.completed ? "Yes" : "No"}
+    `;
 
     // Add delete button
     const deleteButton = document.createElement("button");

@@ -12,7 +12,8 @@ body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: center;
+  flex-direction: column;
   padding-top: 60px;
   transition: background 0.3s ease-in-out;
 }
@@ -48,6 +49,8 @@ body {
 }
 
 #taskList {
+  display: flex;
+  flex-direction: column;
   list-style: none;
   width: 100%;
   max-width: 500px;
@@ -55,6 +58,8 @@ body {
 }
 
 #taskList li {
+  display: flex;
+  flex-direction: column;
   background: linear-gradient(135deg, #ff9a9e, #fad0c4);
   border: none;
   border-radius: 15px;
@@ -66,6 +71,17 @@ body {
   letter-spacing: 0.5px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#taskList li button {
+  background: linear-gradient(135deg, #1cb5e0, #000851);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
 }
 
 #taskList li:hover {
@@ -85,4 +101,59 @@ body {
 #taskList li.completed::before {
   content: "✅ ";
   margin-right: 8px;
+}
+form {
+  background: linear-gradient(135deg, #379ccf, #b9cde0);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form input,
+form button {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+}
+
+form input {
+  width: 100%;
+  padding: 14px 18px;
+  border: none;
+  border-radius: 30px;
+  font-size: 17px;
+  outline: none;
+  background: linear-gradient(135deg, #42eb4a, #e03be0);
+  color: #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+form input::placeholder {
+  color: #555;
+}
+
+form input:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(100, 200, 255, 0.6);
+}
+
+form button {
+  background: linear-gradient(135deg, #1cb5e0, #000851);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+  background: linear-gradient(135deg, #000851, #1cb5e0);
+  transform: translateY(-2px);
 }

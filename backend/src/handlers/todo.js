@@ -5,11 +5,6 @@ const getAllTodos = async () => {
   return await Todo.find().lean();
 };
 
-// Get one todo by id
-const getTodoById = async (id) => {
-  return await Todo.findOne({ _id: id }).lean();
-};
-
 // Create one todo
 const createTodo = async ({ title, description, dueDate }) => {
   return await Todo.create({
@@ -39,7 +34,7 @@ const updateTodo = async ({ id, title, description, dueDate, completed }) => {
   });
 };
 
-// New function: Search todos by title
+// Search todos by title
 const searchTodosByTitle = async (keyword) => {
   const regex = new RegExp(keyword, "i"); // Create a case-insensitive regex for the keyword
   return await Todo.find({ title: { $regex: regex } }).lean();
@@ -47,7 +42,6 @@ const searchTodosByTitle = async (keyword) => {
 
 export default {
   getAllTodos,
-  getTodoById,
   createTodo,
   deleteTodo,
   updateTodo,
