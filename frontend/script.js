@@ -39,6 +39,10 @@ function displayData(data) {
 
 // Function to handle search
 async function filterData(query) {
+  if (!query) {
+    fetchData();
+    return;
+  }
   try {
     const response = await fetch(
       `http://localhost:3000/api/todo/search?keyword=${encodeURIComponent(
